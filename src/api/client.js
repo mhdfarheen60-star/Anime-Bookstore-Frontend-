@@ -79,7 +79,9 @@ class ApiClient {
       // Distinguish a genuinely dead session from a rejected credential. Only
       // the former should sign the user out; the latter must keep the server's
       // message ("Invalid email or password") instead of a generic one.
-      const authEndpoints = ['/auth/login', '/auth/register', '/auth/google'];
+      // /auth/me is the session bootstrap on page load: a 401 there just means
+      // "not signed in", so it must not redirect public pages to /login.
+      const authEndpoints = ['/auth/login', '/auth/register', '/auth/google', '/auth/me'];
       const isCredentialRejection = authEndpoints.includes(endpoint);
 
       if (!isCredentialRejection) {
