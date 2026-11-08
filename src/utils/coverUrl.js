@@ -1,9 +1,11 @@
 // Uploaded covers are stored as "/uploads/covers/<file>" and served by the API
 // server, which runs on a different origin from the Vite app. Catalogue covers
 // are already absolute URLs.
+import { API_URL } from '../config.js';
+
 const API_ORIGIN = (() => {
   try {
-    return new URL(import.meta.env.VITE_API_URL || 'http://localhost:5000/api').origin
+    return new URL(`${API_URL}/api`).origin
   } catch {
     return ''
   }

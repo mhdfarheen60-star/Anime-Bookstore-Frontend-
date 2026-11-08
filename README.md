@@ -134,9 +134,15 @@ placeholders there, never real credentials.
 ### Frontend (.env)
 
 ```env
-VITE_API_URL=http://localhost:5000/api
+VITE_API_URL=http://localhost:5000
 # Optional; leave empty to hide the Google sign-in button
 VITE_GOOGLE_CLIENT_ID=
+```
+
+For production builds (e.g. Render static site), set `.env.production`:
+
+```env
+VITE_API_URL=https://anime-bookstore.onrender.com
 ```
 
 `VITE_*` variables are bundled into the public JavaScript – never put secrets here.

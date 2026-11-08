@@ -3,8 +3,10 @@
 // Mutating requests must echo the double-submit CSRF cookie in a header;
 // the token is kept in memory + sessionStorage (survives reloads, never
 // written to localStorage).
+import { API_URL } from '../config.js';
+
 const CSRF_STORAGE_KEY = 'csrfToken';
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_BASE_URL = `${API_URL}/api`;
 
 class ApiClient {
   constructor() {
